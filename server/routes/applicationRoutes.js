@@ -3,7 +3,6 @@ const router = express.Router();
 const Application = require("../models/Application");
 const auth = require("../middlewares/auth");
 
-// Получение всех заявок
 router.get("/", auth, async (req, res) => {
   try {
     const applications = await Application.find().sort({ createdAt: -1 });
@@ -14,7 +13,6 @@ router.get("/", auth, async (req, res) => {
   }
 });
 
-// Создание заявки
 router.post("/", async (req, res) => {
   try {
     const { fullName, phone, problemDescription } = req.body;

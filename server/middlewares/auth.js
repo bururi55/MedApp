@@ -1,15 +1,12 @@
 const jwt = require("jsonwebtoken");
 
 module.exports = function (req, res, next) {
-  // Получение токена из заголовка
   const token = req.header("Authorization")?.replace("Bearer ", "");
 
-  // Проверка наличия токена
   if (!token) {
     return res.status(401).json({ message: "No token, authorization denied" });
   }
 
-  // Проверка токена
   try {
     const decoded = jwt.verify(
       token,

@@ -1,6 +1,5 @@
 const Application = require("../models/Application");
 
-// Получение всех заявок
 exports.getAllApplications = async (req, res) => {
   try {
     const applications = await Application.find().sort({ createdAt: -1 });
@@ -10,7 +9,6 @@ exports.getAllApplications = async (req, res) => {
   }
 };
 
-// Создание заявки
 exports.createApplication = async (req, res) => {
   try {
     const { fullName, phone, problemDescription } = req.body;
